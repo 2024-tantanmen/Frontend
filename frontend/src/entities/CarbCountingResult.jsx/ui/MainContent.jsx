@@ -142,6 +142,7 @@ const CntContainer = styled.div`
     align-items: center;
     margin-left: 2rem;
     margin-top: 2.4rem;
+    gap: 0.8rem;
 `
 
 const ShareContainer = styled.div`
