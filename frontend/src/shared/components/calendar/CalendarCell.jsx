@@ -33,7 +33,7 @@ function CalendarCell({ schedule, index, day, today }) {
                 
                     {schedule.map((e,i)=>(
                         <StyledScheduleContainer>
-                            {e}
+                            {e.title}
                         </StyledScheduleContainer>
                     ))}
                 
