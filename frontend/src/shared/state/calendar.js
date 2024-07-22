@@ -4,7 +4,7 @@ export const augustState = atom({
     key: 'augustState',
     default: new Array(31).fill(null).map(() => ([
         {
-            title: 'hello',
+            title: '일정은여섯글자',
             firstMeal: [],
             secondMeal: [],
             thirdMeal: [],
@@ -13,7 +13,7 @@ export const augustState = atom({
             stepCount: ''
         },
         {
-            title: 'hello',
+            title: '일정은여섯글자',
             firstMeal: [],
             secondMeal: [],
             thirdMeal: [],

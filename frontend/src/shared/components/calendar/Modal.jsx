@@ -24,21 +24,21 @@ function Modal({ setIsModalVisible, index, day }) {
         console.log(august[index]);
     }, []);
 
-    function isDietLog(e){
-        if(e.firstMeal.length !== 0 ||
+    function isDietLog(e) {
+        if (e.firstMeal.length !== 0 ||
             e.secondMeal.length !== 0 ||
             e.thirdMeal.length !== 0 ||
             e.extraMeal.length !== 0
-        ){ return true }
-        else{ return false }
+        ) { return true }
+        else { return false }
     }
 
 
-    function isActivityLog(e){
-        if(e.workoutTime !== '' ||
+    function isActivityLog(e) {
+        if (e.workoutTime !== '' ||
             e.stepCount !== ''
-        ){ return true }
-        else{ return false }
+        ) { return true }
+        else { return false }
     }
 
 
@@ -58,7 +58,7 @@ function Modal({ setIsModalVisible, index, day }) {
             if (dayIndex === index) {
                 return daySchedule.map((item, itemIndex) => {
                     if (itemIndex === i) {
-                        return e.target.value;
+                        return { ...item, title: e.target.value }; // Fixing the title change issue
                     }
                     return item;
                 });
@@ -77,7 +77,7 @@ function Modal({ setIsModalVisible, index, day }) {
                 <StyledTitle>8월 {index + 1}일 {day}요일</StyledTitle>
 
                 <StyledButton onClick={handleBtnClick}>
-                    <img src={X} />
+                    <img src={X} alt="Close" />
                 </StyledButton>
 
             </StyledHeader>
@@ -85,7 +85,7 @@ function Modal({ setIsModalVisible, index, day }) {
             <StyledFlexbox>
 
                 <StyledImgWrap>
-                    <img src={PlusCircle} />
+                    <img src={PlusCircle} alt="Add" />
                 </StyledImgWrap>
 
                 <StyledAddButton onClick={handleAddScheduleClick}>일정추가</StyledAddButton>
@@ -93,13 +93,25 @@ function Modal({ setIsModalVisible, index, day }) {
             </StyledFlexbox>
 
             <StyledScheduleWrap>
+                {august[index].length === 1 &&
+                    august[index][0].title === '' &&
+                    (
+                        <>
+                        <>식빵</>
+                        <NoScheduleText>
+                            아직 기록이 없습니다.<br/>
+                            오늘 당신의 탄수발자국을남겨보세요!
+                        </NoScheduleText>
+                        </>
+                    )
+                }
 
+                {august[index].length !== 1 &&
 
-                {august[index].map((e, i) => (
-                    <StyledScheduleContainer>
+                august[index].map((e, i) => (
+                    <StyledScheduleContainer key={i}>
 
                         <StyledInput
-                            key={i}
                             value={e.title}
                             placeholder={e.title}
                             readOnly={isReadOnly}
@@ -110,18 +122,17 @@ function Modal({ setIsModalVisible, index, day }) {
 
                             <img style={{
                                 width: '24px',
-                            }} src={isDietLog(e) ? DietLog_clicked : DietLog} />
+                            }} src={isDietLog(e) ? DietLog_clicked : DietLog} alt="Diet Log" />
 
                             <img style={{
                                 width: '24px',
-                            }} src={isActivityLog(e) ? ActivityLog_clicked : ActivityLog} />
+                            }} src={isActivityLog(e) ? ActivityLog_clicked : ActivityLog} alt="Activity Log" />
 
                         </StyledButtonWrap>
 
                     </StyledScheduleContainer>
-                ))}
-
-
+                ))
+                }
 
             </StyledScheduleWrap>
 
@@ -133,7 +144,7 @@ export default Modal;
 
 const StyledWrap = styled.div`
 display: flex;
-flex-direction: column
+flex-direction: column;
 `
 
 const StyledHeader = styled.div`
@@ -152,14 +163,14 @@ justify-content: end;
 padding-right: 16px;
 margin-top: 21px;
 gap: 4px;
-margin-bottom: 16px
+margin-bottom: 16px;
 `
 
 const StyledImgWrap = styled.div`
 width: 20px;
 display: flex;
 justify-content: center;
-align_items: center;
+align-items: center;
 `
 
 const StyledTitle = styled.div`
@@ -217,11 +228,20 @@ const StyledInput = styled.input`
 border: none;
 &:focus {
         border: none;
-        outline: none
+        outline: none;
     }
 
 &[readonly] {
 background-color: #fffff;
 }
+`
 
+const NoScheduleText = styled.div`
+color: #BABEC0;
+text-align: center;
+font-family: "Noto Sans KR";
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: 150%; /* 24px */
 `
