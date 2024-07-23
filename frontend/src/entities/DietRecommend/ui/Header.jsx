@@ -1,10 +1,24 @@
 import styled from "styled-components";
 import BackButton from '../../../assets/BackButton.svg'
+import { useNavigate } from "react-router-dom";
+import { newAllergyTypeState, newEatingHabitTypeState } from "../../../shared/state/DietRecommend";
+import { useRecoilState } from "recoil";
 
 function Header(){
+
+    const [newAllergyType, setNewAllergyType] = useRecoilState(newAllergyTypeState)
+    const [newEatingHabitType, setNewEatingHabitType] = useRecoilState(newEatingHabitTypeState)
+    const navigate = useNavigate()
+
+    function handleBackButtonClick(){
+        navigate(-1);
+        setNewAllergyType([])
+        setNewEatingHabitType([])
+    }
+
     return(
         <MainLayout>
-            <img src={BackButton} />
+            <img src={BackButton} onClick={handleBackButtonClick}/>
             <Title>식단 추천</Title>
             <img
             style={{visibility: 'hidden'}}
