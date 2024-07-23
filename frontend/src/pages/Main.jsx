@@ -31,7 +31,7 @@ function Main() {
             </SubLayout>
 
             <FloatingChatbotWrap>
-                <img src={Chatbot_floating} />
+                <Img src={Chatbot_floating} />
             </FloatingChatbotWrap>
 
         </MainLayout>
@@ -74,6 +74,10 @@ position: fixed;
 bottom: 3.7rem;
 right:2rem;
 }
+`
+
+const Img = styled.img`
+${hoverGrow}
 `
 
 export default Main;
