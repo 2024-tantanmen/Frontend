@@ -7,7 +7,9 @@ import linkIcon from "../../../assets/linkIcon.svg";
 import kakaoIcon from "../../../assets/kakaoIcon.svg";
 import StandardButton from "../../../shared/components/StandardButton/StandardButton";
 import Carousel from "./Carousel";
-import { useState } from "react";
+import CustomAlert from "./\bCustomAlert";
+import { shareKakao } from "../../../util/kakaoLink";
+import { useState, useEffect } from "react";
 import { hoverGrow } from "../../../shared/animation/hoverGrow";
 import MenuCarousel from "./MenuCarousel";
 
@@ -15,6 +17,18 @@ function MainContent() {
   const selectedImg = useRecoilValue(selectedImgState);
   const [foodCnt, setFoodCnt] = useState("00"); //음식개수
   const [calCnt, setcalCnt] = useState("000"); //칼로리
+  const [alert, setAlert] = useState({ visible: false, message: '', success: true });
+
+  const copyLink = () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      setAlert({ visible: true, message: '링크를 복사했어요!', success: true });
+      setTimeout(() => setAlert({ ...alert, visible: false }), 1000); 
+    }).catch((error) => {
+      setAlert({ visible: true, message: '링크 복사에 실패했습니다.', success: false });
+      setTimeout(() => setAlert({ ...alert, visible: false }), 1000);
+      console.error('Link copy failed', error);
+    });
+  };
 
   return (
     <Wrapper>
@@ -50,6 +64,7 @@ function MainContent() {
       </FontContainer>
       <MenuCarousel />
 
+      <div style={{height:"3rem"}}><CustomAlert message={alert.message} visible={alert.visible} success={alert.success} /></div>
       <ShareContainer>
         <FontContainer
           style={{ color: "#fff", position: "absolute", left: "2rem" }}
@@ -58,8 +73,8 @@ function MainContent() {
         </FontContainer>
 
         <IconContainer>
-          <Icon src={linkIcon} />
-          <Icon src={kakaoIcon} />
+          <Icon src={linkIcon} onClick={copyLink}/>
+          <Icon src={kakaoIcon} onClick={() => shareKakao()}/>
         </IconContainer>
       </ShareContainer>
 
