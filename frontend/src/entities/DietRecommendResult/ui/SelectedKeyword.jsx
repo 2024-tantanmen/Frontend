@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Choices from "../../../shared/components/choices/Choices"
+import Choices from "../../DietRecommend/ui/Choices"
 
 function SelectedKeyword(){
     return(
