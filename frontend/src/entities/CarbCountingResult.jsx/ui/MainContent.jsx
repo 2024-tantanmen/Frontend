@@ -3,11 +3,11 @@ import { useRecoilValue } from "recoil";
 import { selectedImgState } from "../../../shared/state/Gallery";
 import test from "../../../assets/testImg.svg";
 import icon from "../../../assets/pretzelIcon.svg";
-import linkIcon from "../../../assets/linkIcon.svg";
-import kakaoIcon from "../../../assets/kakaoIcon.svg";
+import link from '../../../assets/Link.svg'
+import kakao from '../../../assets/Kakao.svg'
 import StandardButton from "../../../shared/components/StandardButton/StandardButton";
 import Carousel from "./Carousel";
-import CustomAlert from "./\bCustomAlert";
+import CustomAlert from "./CustomAlert";
 import { shareKakao } from "../../../util/kakaoLink";
 import { useState, useEffect } from "react";
 import { hoverGrow } from "../../../shared/animation/hoverGrow";
@@ -73,8 +73,12 @@ function MainContent() {
         </FontContainer>
 
         <IconContainer>
-          <Icon src={linkIcon} onClick={copyLink}/>
-          <Icon src={kakaoIcon} onClick={() => shareKakao()}/>
+        <ButtonWrap>
+                <CopyLinkWrap>
+                    <IconImg src={link} onClick={copyLink}/>
+                </CopyLinkWrap>
+                <IconImg src={kakao} onClick={shareKakao}/>
+            </ButtonWrap>
         </IconContainer>
       </ShareContainer>
 
@@ -189,13 +193,6 @@ const IconContainer = styled.div`
   right: 1.8rem;
 `;
 
-const Icon = styled.img`
-  width: 4.8rem;
-  height: 4.8rem;
-  cursor: pointer;
-  ${hoverGrow}
-`;
-
 
 const ButtonContainer = styled.div`
   background: #fff;
@@ -206,3 +203,24 @@ const ButtonContainer = styled.div`
   gap: 1.6rem;
   padding: 2rem;
 `;
+
+const ButtonWrap = styled.div`
+display: flex;
+gap: 0.8rem;
+`
+
+const CopyLinkWrap = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+width: 4.8rem;
+height: 4.8rem;
+background-color: white;
+border-radius: 50%;
+${hoverGrow}
+`
+
+const IconImg = styled.img`
+${hoverGrow}
+cursor: pointer;
+`
