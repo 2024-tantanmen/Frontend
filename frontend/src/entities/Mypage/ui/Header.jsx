@@ -1,25 +1,29 @@
 import styled from "styled-components"
-import backButton from '../../assets/BackButton.svg'
+import backButton from '../../../assets/BackButton.svg'
 import { useNavigate } from "react-router-dom";
 
-function Header(){
+function Header() {
 
     const navigate = useNavigate()
 
-    function handleBackButtonClick(){
+    function handleBackButtonClick() {
         navigate(-1)
     }
-    
-    return(
-    <MainLayout>
-        <img
-        onClick={handleBackButtonClick}
-        src={backButton} />
-        <Title>마이페이지</Title>
-        <img 
-        style={{visibility:'hidden'}}
-        src={backButton} />
-    </MainLayout>
+
+    return (
+        <MainLayout>
+
+            <img
+                onClick={handleBackButtonClick}
+                src={backButton} />
+
+            <Title>마이페이지</Title>
+
+            <img
+                style={{ visibility: 'hidden' }}
+                src={backButton} />
+
+        </MainLayout>
     )
 }
 export default Header;

@@ -1,7 +1,11 @@
 import styled from "styled-components"
 import { useState } from "react";
-import Header from "../entities/ Mypage/Header";
-import FootprintCounterArea from "../entities/ Mypage/FootprintCounterArea";
+import Header from "../entities/Mypage/ui/Header";
+import FootprintCounterArea from '../entities/Mypage/ui/FootprintCounterArea'
+import Tabbar from "../entities/Mypage/ui/Tabbar";
+import GoToDietRecommend from '../entities/Mypage/ui/GoToDietRecommend'
+import DietRecommendResultTab from "../entities/Mypage/ui/DietRecommendResultTab";
+
 
 function Mypage (){
 
@@ -9,12 +13,12 @@ function Mypage (){
 
     function renderContent() {
         if (tab === 0) {
-            return <>식단 추천</>;
+            return <DietRecommendResultTab />;
         } else if (tab === 1) {
             return <>탄수 카운팅</>;
         } else if (tab === 2) {
             return <>중독 테스트</>;
-        } else if (tab === 2) {
+        } else if (tab === 3) {
             return <>커뮤니티</>;
         }
     }
@@ -22,11 +26,23 @@ function Mypage (){
     return(
         <>
         <Header />
+
         <FootprintCounterArea />
-        {/* <Tabbar />
-        <Content /> */}
+
+        <Tabbar tab={tab} setTab={setTab}/>
+
+        <GoToDietRecommend />
+
+        <TabLayout>
+            {renderContent()}
+        </TabLayout>
+        
         </>
     )
 }
 
 export default Mypage
+
+const TabLayout = styled.div`
+padding: 4rem 2rem
+`

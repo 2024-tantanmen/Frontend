@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import gotocalendar from '../../assets/GoToCalendar.svg'
-import FootprintCounter from "../Main/ui/FootprintCounter";
+import gotocalendar from '../../../assets/GoToCalendar.svg'
+import FootprintCounter from "../../Main/ui/FootprintCounter";
 
 function FootprintCounterArea (){
     return(
