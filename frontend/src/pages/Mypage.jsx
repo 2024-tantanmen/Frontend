@@ -6,7 +6,7 @@ import Tabbar from "../entities/Mypage/ui/Tabbar";
 import SectionContent from "../entities/Mypage/ui/GoToDietRecommend";
 import DietRecommendResultTab from "../entities/Mypage/ui/DietRecommendResultTab";
 import CarbCountingResultTab from "../entities/Mypage/ui/CarbCountingResultTab";
-import CarbTestResultTab from "../entities/Mypage/ui/CarbCountingResultTab";
+import CarbTestResultTab from "../entities/Mypage/ui/CarbTestResultTab";
 import { useNavigate } from "react-router-dom";
 
 function Mypage (){

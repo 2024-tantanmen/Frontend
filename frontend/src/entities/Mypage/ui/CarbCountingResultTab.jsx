@@ -6,7 +6,8 @@ function CarbCountingResultTab(){
     <CellWrap>
         
         <CarbCountingResultCell />
-        <CarbCountingResultCell /><CarbCountingResultCell />
+        <CarbCountingResultCell />
+        <CarbCountingResultCell />
         
     </CellWrap>
     )
