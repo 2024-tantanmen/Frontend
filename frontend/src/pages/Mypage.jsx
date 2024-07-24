@@ -5,7 +5,8 @@ import FootprintCounterArea from '../entities/Mypage/ui/FootprintCounterArea'
 import Tabbar from "../entities/Mypage/ui/Tabbar";
 import GoToDietRecommend from '../entities/Mypage/ui/GoToDietRecommend'
 import DietRecommendResultTab from "../entities/Mypage/ui/DietRecommendResultTab";
-
+import CarbCountingResultTab from "../entities/Mypage/ui/CarbCountingResultTab";
+import CarbTestResultTab from "../entities/Mypage/ui/CarbCountingResultTab";
 
 function Mypage (){
 
@@ -15,9 +16,9 @@ function Mypage (){
         if (tab === 0) {
             return <DietRecommendResultTab />;
         } else if (tab === 1) {
-            return <>탄수 카운팅</>;
+            return <CarbCountingResultTab />;
         } else if (tab === 2) {
-            return <>중독 테스트</>;
+            return <CarbTestResultTab />;
         } else if (tab === 3) {
             return <>커뮤니티</>;
         }
