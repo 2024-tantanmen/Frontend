@@ -1,19 +1,17 @@
 import styled from "styled-components"
-import Choices from "../../../shared/components/choices/Choices"
+import Choices_nonclickable from "../../../shared/components/choices_nonclickable/Choices_nonclickable"
+
+
 
 function SelectedKeyword(){
     return(
         <MainLayout>
             <Title>선택한 키워드</Title>
 
-            <Choices
-            title="알레르기"
-            choices={['메밀', '땅콩']}
-            />
-
-            <Choices
-            title="식습관"
-            choices={['가리는 것 없음']}
+            <Choices_nonclickable
+            allergies={['메밀', '땅콩']}
+            eatingHabits_free={true}
+            eatingHabits={[]}
             />
         </MainLayout>
     )
