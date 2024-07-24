@@ -6,6 +6,7 @@ import CarbCountingResult from "./pages/CarbCountingResult";
 import DietRecommend from "./pages/DietRecommend";
 import DietRecommendResult from "./pages/DietRecommendResult";
 import CarbTest from "./pages/CarbTest";
+import CarbTestResult from "./pages/CarbTestResult";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="diet-recommend" element={<DietRecommend/>} />
       <Route path="diet-recommend-result" element={<DietRecommendResult/>} />
       <Route path="carb-test" element={<CarbTest/>}/>
+      <Route path="carb-test-result" element={<CarbTestResult/>}/>
     </Routes>
   );
 }

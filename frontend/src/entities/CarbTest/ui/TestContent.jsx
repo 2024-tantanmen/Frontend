@@ -5,6 +5,7 @@ import orangeIcon from '../../../assets/testOrangeCheckbox.svg';
 import grayCheck from "../../../assets/grayCheck.svg";
 import whiteCheck from "../../../assets/whiteCheck.svg";
 import StandardButton from '../../../shared/components/StandardButton/StandardButton';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { selectedCheckCountState } from '../../../shared/state/TestResult';
 
@@ -12,6 +13,7 @@ export default function TestContent() {
     const [icons, setIcons] = useState(Array(10).fill(grayIcon));
     const [isReset, setIsReset] = useState(false);
     const [selectedCount, setSelectedCount] = useRecoilState(selectedCheckCountState);
+    const Navigate = useNavigate();
 
     const testItems = [
         "아침을 배불리 먹은 후 점심시간 전에\n배가 고프다.",
@@ -46,6 +48,7 @@ export default function TestContent() {
     const handleResult = () => {
         const count = icons.filter(icon => icon === orangeIcon).length;
         setSelectedCount(count);
+        Navigate('/carb-test-result');
         console.log(`선택된 체크박스 개수: ${count}`);
     };
 
