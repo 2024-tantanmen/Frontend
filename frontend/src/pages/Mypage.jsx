@@ -1,9 +1,9 @@
 import styled from "styled-components"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../entities/Mypage/ui/Header";
 import FootprintCounterArea from '../entities/Mypage/ui/FootprintCounterArea'
 import Tabbar from "../entities/Mypage/ui/Tabbar";
-import GoToDietRecommend from '../entities/Mypage/ui/GoToDietRecommend'
+import SectionContent from "../entities/Mypage/ui/GoToDietRecommend";
 import DietRecommendResultTab from "../entities/Mypage/ui/DietRecommendResultTab";
 import CarbCountingResultTab from "../entities/Mypage/ui/CarbCountingResultTab";
 import CarbTestResultTab from "../entities/Mypage/ui/CarbCountingResultTab";
@@ -11,6 +11,19 @@ import CarbTestResultTab from "../entities/Mypage/ui/CarbCountingResultTab";
 function Mypage (){
 
     const [tab, setTab] = useState(0);
+    const [section, setSection] = useState({})
+
+    function renderSectionContentArg(){
+        if (tab === 0) {
+            return {sectionTitle: '또 다른 식단이 궁금하다면?', sectionButtonText: '추천받기'}
+        } else if (tab === 1) {
+            return {sectionTitle: '오늘 먹을 점심의 탄수화물 포함량은?', sectionButtonText: '알아보기'}
+        } else if (tab === 2) {
+            return {sectionTitle: '다시 테스트 해보고 싶다면?', sectionButtonText: '테스트하기'}
+        } else if (tab === 3) {
+            return {sectionTitle: '다른 채팅방도 궁금하다면?', sectionButtonText: '이동하기'}
+        }
+    }
 
     function renderContent() {
         if (tab === 0) {
@@ -24,6 +37,10 @@ function Mypage (){
         }
     }
 
+    useEffect(()=>{
+        setSection(renderSectionContentArg())
+    }, [tab])
+
     return(
         <>
         <Header />
@@ -32,7 +49,10 @@ function Mypage (){
 
         <Tabbar tab={tab} setTab={setTab}/>
 
-        <GoToDietRecommend />
+        <SectionContent
+        title={section.sectionTitle}
+        buttonText={section.sectionButtonText}
+        />
 
         <TabLayout>
             {renderContent()}

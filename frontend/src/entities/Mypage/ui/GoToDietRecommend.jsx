@@ -1,19 +1,19 @@
 import styled from "styled-components"
 
-function GoToDietRecommend(){
+function SectionContent({title, buttonText}){
     return(
     <MainLayout>
 
-        <Title>또 다른 식단이 궁금하다면?</Title>
+        <Title>{title}</Title>
 
         <ButtonWrap>
-            추천받기
+            {buttonText}
         </ButtonWrap>
     </MainLayout>
     )
 }
 
-export default GoToDietRecommend
+export default SectionContent
 
 const MainLayout = styled.div`
 width: 100%;
