@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import StandardButton from "../../../shared/components/StandardButton/StandardButton"
 
 function SectionContent({title, buttonText}){
     return(
@@ -6,9 +7,11 @@ function SectionContent({title, buttonText}){
 
         <Title>{title}</Title>
 
-        <ButtonWrap>
-            {buttonText}
-        </ButtonWrap>
+            <StandardButton
+            title={buttonText}
+            padding="1.2rem 2.3rem"
+            />
+
     </MainLayout>
     )
 }
