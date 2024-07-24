@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import StandardButton from "../../../shared/components/StandardButton/StandardButton"
 
-function SectionContent({title, buttonText}){
+function SectionContent({title, buttonText, onClick}){
     return(
     <MainLayout>
 
@@ -10,6 +10,7 @@ function SectionContent({title, buttonText}){
             <StandardButton
             title={buttonText}
             padding="1.2rem 2.3rem"
+            onClick={onClick}
             />
 
     </MainLayout>
