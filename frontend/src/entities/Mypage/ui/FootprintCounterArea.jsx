@@ -1,8 +1,16 @@
 import styled from "styled-components";
 import gotocalendar from '../../../assets/GoToCalendar.svg'
 import FootprintCounter from "../../Main/ui/FootprintCounter";
+import { useNavigate } from "react-router-dom";
 
 function FootprintCounterArea (){
+
+    const navigate = useNavigate()
+
+    function handleGoToCalendarCLick(){
+        navigate('/')   
+    }
+
     return(
         <MainLayout>
 
@@ -11,7 +19,7 @@ function FootprintCounterArea (){
 
                     <img src={gotocalendar} />
 
-                    <GotoCalendarTitle>
+                    <GotoCalendarTitle onClick={handleGoToCalendarCLick}>
                         달력으로 이동
                     </GotoCalendarTitle>
                     
