@@ -9,17 +9,12 @@ export default function AiChat() {
     const [currentTime, setCurrentTime] = useState('');
 
     useEffect(() => {
-        const updateTime = () => {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            setCurrentTime(`${hours}:${minutes}`);
-        };
-        updateTime();
-        const timer = setInterval(updateTime, 60000);
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        setCurrentTime(`${hours}:${minutes}`);
+    }, []); 
 
-        return () => clearInterval(timer);
-    }, []);
 
     return (
         <Wrapper>

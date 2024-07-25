@@ -1,33 +1,29 @@
 import styled from "styled-components";
 import { useEffect, useState } from "react";
+import { chatbotQuestionState } from "../../../shared/state/Chatbot";
+import { useRecoilValue } from "recoil";
 
-export default function MyChat(){
 
+export default function MyChat({ index }) {
+    const questions = useRecoilValue(chatbotQuestionState);
     const [currentTime, setCurrentTime] = useState('');
 
     useEffect(() => {
-        const updateTime = () => {
-            const now = new Date();
-            const hours = String(now.getHours()).padStart(2, '0');
-            const minutes = String(now.getMinutes()).padStart(2, '0');
-            setCurrentTime(`${hours}:${minutes}`);
-        };
-        updateTime();
-        const timer = setInterval(updateTime, 60000);
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        setCurrentTime(`${hours}:${minutes}`);
+    }, []); 
 
-        return () => clearInterval(timer);
-    }, []);
-
-    return(
-            <Wrapper>
-                <MessageContainer>
+    return (
+        <Wrapper>
+            <MessageContainer>
                 <Time>{currentTime}</Time>
-                    <Answer>ddd</Answer>
-                    
-                </MessageContainer>
-            </Wrapper>
-        );
-    }
+                <Answer>{questions[index]}</Answer>
+            </MessageContainer>
+        </Wrapper>
+    );
+}
     
     const Wrapper = styled.div`
     margin-top: 0.8rem;
