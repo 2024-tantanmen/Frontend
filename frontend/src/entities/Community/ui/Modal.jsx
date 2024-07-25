@@ -7,8 +7,11 @@ import { RoomState } from "../../../shared/state/Community";
 import { useRecoilState } from "recoil";
 import StandardInput from "../../../shared/components/StandardInput/StandardInput";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Modal({ setIsModalVisible }) {
+    const navigate = useNavigate()
+
     const [room, setRoom] = useRecoilState(RoomState);
     const [roomName, setRoomName] = useState('');
     const [count, setCount] = useState('');
@@ -32,6 +35,8 @@ function Modal({ setIsModalVisible }) {
         }])
 
         setIsModalVisible(false)
+
+        navigate('/community-chat')
     }
 
     const isActivate = (roomName !== '' && count !== '')
