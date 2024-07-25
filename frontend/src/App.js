@@ -8,6 +8,7 @@ import DietRecommendResult from "./pages/DietRecommendResult";
 import Mypage from "./pages/Mypage";
 import CarbTest from "./pages/CarbTest";
 import CarbTestResult from "./pages/CarbTestResult";
+import Chatbot from "./pages/Chatbot";
 import Community from "./pages/Community";
 import CommunityChat from "./pages/CommunityChat";
 
@@ -23,6 +24,7 @@ function App() {
       <Route path="mypage" element={<Mypage/>} />
       <Route path="carb-test" element={<CarbTest/>}/>
       <Route path="carb-test-result" element={<CarbTestResult/>}/>
+      <Route path="chatbot" element={<Chatbot/>}/>
       <Route path="community" element={<Community/>}/>
       <Route path="community-chat" element={<CommunityChat/>}/>
     </Routes>
