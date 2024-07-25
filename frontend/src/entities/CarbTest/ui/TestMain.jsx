@@ -6,16 +6,19 @@ export default function TestMain(){
 
     return(
     <Wrapper>
+
         <TitleContainer>
             <Icon src={icon}/>
             <div>자신에게 해당하는 질문에 체크하세요.</div>
         </TitleContainer>
+
         <TestContent/>
+
     </Wrapper>);
 }
 
 const Wrapper = styled.div`
-background: var(--Gray1, #F2F3F5);
+background: #F2F3F5;
 padding: 2.5rem 2rem 1.6rem 2rem;
 `
 
@@ -32,6 +35,6 @@ line-height: normal;
 `
 
 const Icon=styled.img`
-    width: 3.2rem;
-    height: 3.2rem;
+width: 3.2rem;
+height: 3.2rem;
 `
