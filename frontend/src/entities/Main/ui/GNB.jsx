@@ -16,7 +16,7 @@ function GNB (){
             <GNBCell title={"식단 추천"} img={GNB1} onClick={()=>navigate('/diet-recommend')}/>
             <GNBCell title={"탄수 카운팅"} img={GNB2} onClick={()=>navigate('/carb-counting')} />
             <GNBCell title={"중독 테스트"} img={GNB3} onClick={()=>navigate('/carb-test')}/>
-            <GNBCell title={"커뮤니티"} img={GNB4} />
+            <GNBCell title={"커뮤니티"} img={GNB4} onClick={()=>navigate('/community')}/>
         </MainLayout>
     )
 }
