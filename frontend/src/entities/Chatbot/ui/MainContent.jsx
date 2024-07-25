@@ -1,28 +1,26 @@
 import { useState } from "react";
 import styled from "styled-components";
 import AiChat from "./AiChat";
-import { useRecoilState } from "recoil";
-import { chatbotAnswerState } from "../../../shared/state/Chatbot";
+import { chatbotAnswerState, chatbotQuestionState } from "../../../shared/state/Chatbot";
 import DefaultChat from "./DefaultChat";
 import MyChat from "./MyChat";
+import recoil from "recoil"
+import { useRecoilValue } from "recoil";
 
-function MainContent() {
-
-    const [chatbotAnswer, setChatbotAnswer] = useRecoilState(chatbotAnswerState);
+export default function MainContent() {
+    const questions = useRecoilValue(chatbotQuestionState);
 
     return (
         <Wrapper>
             <Welcome>반가워요<br/>탄수발자국 챗봇이에요!</Welcome>
-            <DefaultChat/>
-            <AiChat/>
-            <MyChat/>
-            <MyChat/>
+            <DefaultChat />
+            {questions.map((_, index) => (
+                <MyChat key={index} index={index} />
+            ))}
             <AiChat/>
         </Wrapper>
     );
 }
-
-export default MainContent;
 
 const Wrapper = styled.div`
     max-height: 100%;

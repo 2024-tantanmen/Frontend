@@ -4,9 +4,32 @@ import MainContent from "../entities/Chatbot/ui/MainContent";
 import send from "../assets/sendIcon.svg";
 import sendOrange from "../assets/sendOrange.svg";
 import { useState } from 'react';
+import { useRecoilState } from "recoil";
+import { chatbotQuestionState } from "../shared/state/Chatbot";
+import { useEffect } from "react";
 
 export default function Chatbot() {
     const [sendIcon, setSendIcon] = useState(send);
+    const [inputValue, setInputValue] = useState('');
+    const [questions, setQuestions] = useRecoilState(chatbotQuestionState);
+
+
+    {/*여기서 백엔드한테 전송*/}
+    useEffect(() => {
+        console.log(questions);
+    }, [questions]);
+
+    const handleInputChange = (e) => {
+        setInputValue(e.target.value);
+    };
+
+    const handleSend = () => {
+        if (inputValue.trim() !== '') {
+            setQuestions((prevQuestions) => [...prevQuestions, inputValue]);
+            setInputValue('');
+        }
+    };
+
 
     return (
         <Wrapper>
@@ -15,13 +38,18 @@ export default function Chatbot() {
                 <MainContent />
             </Content>
             <InputContainer>
-                <Input placeholder="챗봇에게 질문을 해보세요." />
+                <Input 
+                    placeholder="챗봇에게 질문을 해보세요."
+                    value={inputValue}
+                    onChange={handleInputChange}
+                />
                 <Send
-                    src={sendIcon}
-                    onMouseEnter={() => setSendIcon(sendOrange)}
-                    onMouseLeave={() => setSendIcon(send)}
-                    onMouseDown={() => setSendIcon(sendOrange)}
-                    onMouseUp={() => setSendIcon(send)}
+                    src={inputValue ? sendOrange : send}
+                    onClick={handleSend}
+                    onMouseEnter={() => inputValue && setSendIcon(sendOrange)}
+                    onMouseLeave={() => inputValue && setSendIcon(sendOrange)}
+                    onMouseDown={() => inputValue && setSendIcon(sendOrange)}
+                    onMouseUp={() => inputValue && setSendIcon(sendOrange)}
                 />
             </InputContainer>
         </Wrapper>
@@ -79,3 +107,9 @@ const Send = styled.img`
     width: 3rem;
     height: 3rem; 
 `;
+
+
+
+
+
+

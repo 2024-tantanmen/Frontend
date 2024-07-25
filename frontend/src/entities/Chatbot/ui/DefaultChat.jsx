@@ -32,7 +32,7 @@ export default function AiChat() {
             </MessageContainer>
         </Wrapper>
         <Wrapper>
-        <Profile src={profile} />
+        <Profile src={profile} style={{visibility:"hidden"}}/>
         <MessageContainer>
             <Answer style={{display:"flex", flexDirection:"column"}}>
                 <div style={{fontSize:"1.6rem", fontWeight:"700", marginTop: "1.2rem"}}>다양한 탄수화물 관련<br/>궁금증을 해결해보세요!</div>
