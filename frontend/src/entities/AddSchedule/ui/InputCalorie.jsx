@@ -32,6 +32,7 @@ function InputCalorie(){
 
                 <StandardInput
                 placeholder="섭취 칼로리 직접 입력"
+                value={newSchedule.calorie ?? null}
                 onChange={handleInputChange}
                 padding="0"
                 />
