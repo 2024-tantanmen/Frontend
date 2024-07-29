@@ -30,8 +30,6 @@ function ShareResult() {
           }}><CustomAlert message={alert.message} visible={alert.visible} success={alert.success} /></div>
         
         <MainLayout>
-        
-
             <Title>테스트 결과를 공유하세요!</Title>
             <ButtonWrap>
                 <CopyLinkWrap>
