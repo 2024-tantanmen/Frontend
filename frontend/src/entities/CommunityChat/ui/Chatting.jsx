@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { useState, useEffect } from "react";
 import send from '../../../assets/send_community.svg';
 import send_active from '../../../assets/send_active_community.svg';
