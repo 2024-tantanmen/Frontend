@@ -10,12 +10,7 @@ import ExitInfo from "./ExitInfo";
 function Chatting() {
     const [input, setInput] = useState('');
     const [isActive, setIsActive] = useState(false);
-
-    useEffect(() => {
-        setIsActive(input !== '');
-    }, [input]);
-
-    const chattings = [
+    const [chattings, setChattings] = useState([
         {
             type: 'me',
             date: '00:00',
@@ -35,7 +30,25 @@ function Chatting() {
             type: 'out',
             name: '홍길동'
         }
-    ];
+    ])
+
+    useEffect(() => {
+        setIsActive(input !== '');
+    }, [input]);
+
+    function handleSendButtonClick() {
+        if (input.trim() === '') return;
+
+        const now = new Date();
+        const formattedDate = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        setChattings((prev) => [...prev, {
+            type: 'me',
+            date: formattedDate,
+            chat: input
+        }]);
+        setInput('');
+    }
 
     return (
         <>
@@ -84,10 +97,14 @@ function Chatting() {
                         placeholder='챗봇'
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && handleSendButtonClick()}
                     />
                 </InputContainer>
 
-                <Img src={isActive ? send_active : send} />
+                <Img
+                    src={isActive ? send_active : send}
+                    onClick={handleSendButtonClick}
+                />
             </InputWrap>
         </>
     );
@@ -150,4 +167,6 @@ const Input = styled.input`
     }
 `;
 
-const Img = styled.img``;
+const Img = styled.img`
+    cursor: pointer; /* Add cursor pointer to indicate clickability */
+`;
