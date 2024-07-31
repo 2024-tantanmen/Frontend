@@ -4,6 +4,7 @@ import { useState } from "react";
 import Modal from './Modal'
 import { crntClickedDayState } from '../../../shared/state/calendar'
 import { useRecoilState } from 'recoil'
+import menu from '../../../assets/menu_addSchedule.svg'
 
 function Header (){
 
@@ -12,6 +13,10 @@ function Header (){
     const [isModalVisible, setIsModalVisible] = useState(false)
 
     function handleBackButtonClick(){
+        setIsModalVisible(true)
+    }
+
+    function handleDeleteClick(){
         setIsModalVisible(true)
     }
 
@@ -30,11 +35,10 @@ function Header (){
                 8월 {crntClickedDay+1}일 요일
             </Date>
 
-            {/* Layout용 히든 컴포넌트*/}
+            
             <StyledBackButton
-            src={BackButton}
-            onClick={handleBackButtonClick}
-            style={{visibility:'hidden'}}
+            src={menu}
+            onClick={handleDeleteClick}
             />
 
 
@@ -73,6 +77,7 @@ line-height: normal;
 const StyledBackButton = styled.img`
 width:3.6rem;
 height:3.6rem;
+cursor:pointer;
 `
 
 const StyledModalContainer = styled.div`

@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 import { useRecoilState } from 'recoil';
 import './Choices.css';
 import { newScheduleState } from '../../state/AddSchedule';
-import { hover } from '@testing-library/user-event/dist/hover';
 
 function Choices({ title, choices, type }) {
     const [crntSchedule, setCrntSchedule] = useRecoilState(newScheduleState);
@@ -55,6 +54,7 @@ function Choices({ title, choices, type }) {
 
 const hoverGrow = css`
   transition: transform 0.3s ease;
+  cursor:pointer;
   &:hover {
     transform: scale(1.1);
     background-color: #EF6038;
