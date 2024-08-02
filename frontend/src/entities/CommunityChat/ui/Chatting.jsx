@@ -86,7 +86,7 @@ const Chatting = () => {
                     }
                 ]);
             });
-            
+
             if(fromPage === 'community'){
                 sendEnterMessage()
             }
@@ -179,7 +179,7 @@ const Chatting = () => {
             <InputWrap>
                 <InputContainer>
                     <Input
-                        placeholder='챗봇'
+                        placeholder='텍스트를 입력해주세요.'
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                     />
