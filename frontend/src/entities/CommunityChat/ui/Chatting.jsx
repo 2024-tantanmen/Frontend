@@ -12,6 +12,7 @@ import { fetchPrevChattings } from '../api/api';
 import { useRecoilValue } from 'recoil';
 import { RoomState } from '../../../shared/state/Community';
 import { crntClickedRoomIdState } from '../../../shared/state/Community';
+import { useLocation } from 'react-router-dom';
 
 const Chatting = () => {
     const [input, setInput] = useState('');
@@ -22,6 +23,8 @@ const Chatting = () => {
     const rooms = useRecoilValue(RoomState);
     const [chatRoomId, setChatRoomId] = useState(-1);
     const messagesEndRef = useRef(null);
+    const location = useLocation();
+    const fromPage = location.state?.from || 'Unknown';
 
     let stompClient = useRef(null);
 
@@ -83,7 +86,11 @@ const Chatting = () => {
                     }
                 ]);
             });
-            sendEnterMessage();
+            
+            if(fromPage === 'community'){
+                sendEnterMessage()
+            }
+
         }, (error) => {
             console.error('Error: ' + error);
         });

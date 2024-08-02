@@ -13,7 +13,7 @@ function CommunityCell({room_name, room_current_capacity, room_max_capacity, unc
 
     function handleCellClick(){
         setCrntClickedId(room_id)
-        navigate('/community-chat')
+        navigate('/community-chat', { state: { from: 'mypage' } })
     }
 
     return(
