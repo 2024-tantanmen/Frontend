@@ -87,6 +87,14 @@ const Chatting = () => {
         }, (error) => {
             console.error('Error: ' + error);
         });
+
+        socket.onclose = () => {
+            console.log('WebSocket connection closed');
+            // Optionally, try to reconnect after a certain timeout
+            setTimeout(() => {
+                connect();
+            }, 5000); // reconnect after 5 seconds
+        };
     };
 
     const disconnect = () => {
@@ -96,7 +104,6 @@ const Chatting = () => {
             });
         }
     };
-
 
     const sendMessage = () => {
         const chatMessage = {
