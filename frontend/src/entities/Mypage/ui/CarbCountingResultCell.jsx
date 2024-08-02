@@ -2,7 +2,9 @@ import styled from "styled-components"
 import Choices_nonclickable from "../../../shared/components/choices_nonclickable/Choices_nonclickable";
 import StandardButton from "../../../shared/components/StandardButton/StandardButton";
 
+
 function CarbCountingResultCell({date, name, amount, calorie, carb, prot, fat, sugar, image_url }) {
+
     return (
         <MainLayout>
 
@@ -19,6 +21,7 @@ function CarbCountingResultCell({date, name, amount, calorie, carb, prot, fat, s
                     <img src={image_url} />
 
                     <TextWrap>
+
                         <Title> {name} {calorie}Kcal</Title>
                         <Desc>탄수화물{carb}g</Desc>
                         <Desc>단백질{prot}g</Desc>
@@ -32,6 +35,7 @@ function CarbCountingResultCell({date, name, amount, calorie, carb, prot, fat, s
                     title='자세히보기'
                     padding="1.2rem 2.1rem"
                 /> */}
+
             </ContentWrap>
 
         </MainLayout>
@@ -43,7 +47,7 @@ export default CarbCountingResultCell
 const MainLayout = styled.div`
 display: flex;
 flex-direction: column;
-gap: 1.6rem;
+gap: 0.5rem;
 padding: 1.6rem;
 border-radius: 1.6rem;
 background: #F2F3F5;
