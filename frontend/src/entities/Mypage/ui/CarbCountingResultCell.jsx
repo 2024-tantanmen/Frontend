@@ -1,15 +1,14 @@
 import styled from "styled-components"
 import Choices_nonclickable from "../../../shared/components/choices_nonclickable/Choices_nonclickable";
 import StandardButton from "../../../shared/components/StandardButton/StandardButton";
-import imageSection from '../../../assets/imageSection.png'
 
-function CarbCountingResultCell() {
+function CarbCountingResultCell({date, amount, calorie, carb, image_url }) {
     return (
         <MainLayout>
 
             <DateWrap>
                 <DateContainer>
-                    00.00.0요일
+                    {date}
                 </DateContainer>
 
             </DateWrap>
@@ -17,11 +16,11 @@ function CarbCountingResultCell() {
 
                 <ContentContainer>
 
-                    <img src={imageSection} />
+                    <img src={image_url} />
 
                     <TextWrap>
-                        <Desc>총 00개의 음식</Desc>
-                        <Title>총 000Kcal</Title>
+                        <Desc>총 {amount}개의 음식</Desc>
+                        <Title>총 {calorie}Kcal</Title>
                     </TextWrap>
 
                 </ContentContainer>
