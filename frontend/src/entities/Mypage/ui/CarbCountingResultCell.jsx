@@ -19,16 +19,13 @@ function CarbCountingResultCell({date, amount, calorie, carb, image_url }) {
                     <img src={image_url} />
 
                     <TextWrap>
+
                         <Desc>총 {amount}개의 음식</Desc>
                         <Title>총 {calorie}Kcal</Title>
+
                     </TextWrap>
 
                 </ContentContainer>
-
-                <StandardButton
-                    title='자세히보기'
-                    padding="1.2rem 2.1rem"
-                />
             </ContentWrap>
 
         </MainLayout>
@@ -40,7 +37,7 @@ export default CarbCountingResultCell
 const MainLayout = styled.div`
 display: flex;
 flex-direction: column;
-gap: 1.6rem;
+gap: 0.5rem;
 padding: 1.6rem;
 border-radius: 1.6rem;
 background: #F2F3F5;
