@@ -112,6 +112,15 @@ const Chatting = () => {
         }
     };
 
+    const disconnect = () => {
+        if (stompClient.current) {
+            stompClient.current.disconnect(() => {
+                console.log('Disconnected');
+            });
+        }
+    };
+
+
     const sendMessage = () => {
         const chatMessage = {
             content: input,
