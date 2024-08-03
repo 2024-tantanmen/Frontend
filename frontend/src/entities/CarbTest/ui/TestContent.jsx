@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import grayIcon from '../../../assets/testGrayCheckbox.svg';
 import orangeIcon from '../../../assets/testOrangeCheckbox.svg';
 import grayCheck from "../../../assets/grayCheck.svg";
 import whiteCheck from "../../../assets/whiteCheck.svg";
 import StandardButton from '../../../shared/components/StandardButton/StandardButton';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { selectedCheckCountState } from '../../../shared/state/TestResult';
+import { isLogin } from "../../../shared/function/isLogin";
+import { saveTest } from '../api/api';
 
 export default function TestContent() {
     const [icons, setIcons] = useState(Array(10).fill(grayIcon));
@@ -48,7 +50,20 @@ export default function TestContent() {
     const handleResult = () => {
         const count = icons.filter(icon => icon === orangeIcon).length;
         setSelectedCount(count);
-        Navigate('/carb-test-result');
+        if(count == 0){
+            Navigate('/carb-test-result/step1');
+        }else if(count>=1 && count<=3){
+        Navigate('/carb-test-result/step2');}
+        else if(count>=4 && count<=7){
+            Navigate('/carb-test-result/step3');
+        }
+        else if(count>=8 && count<=10){
+            Navigate('/carb-test-result/step4')
+        }
+        
+        if(isLogin()){
+            saveTest(count);
+        }
         console.log(`선택된 체크박스 개수: ${count}`);
     };
 

@@ -23,7 +23,7 @@ function CarbTestResultTab() {
             return '중독'
         }
     }
-
+  
     return (
 
         <>

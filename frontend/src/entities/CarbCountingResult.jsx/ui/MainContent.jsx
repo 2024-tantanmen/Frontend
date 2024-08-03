@@ -39,10 +39,8 @@ function MainContent() {
     const token = sessionStorage.getItem('token');
     
     if (!token) {
-        console.log("로그인해");
         navigate('/login');
     } else {
-        console.log("여기");
         try {
             await saveClassification(file[selectedImg], code);
             navigate('/');

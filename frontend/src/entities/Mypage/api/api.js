@@ -94,7 +94,6 @@ export const fetchAddictions = async (setAddiction) => {
         }
 
         const data = await response.json();
-        console.log(data)
         setAddiction(data.result)
         
         
